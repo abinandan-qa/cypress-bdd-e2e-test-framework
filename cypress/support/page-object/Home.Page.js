@@ -1,6 +1,6 @@
 class HomePage{
  getSpeaker() {
-        return  cy.get('#speakersImg')
+        return cy.get('#speakersImg')
     }
 
 }

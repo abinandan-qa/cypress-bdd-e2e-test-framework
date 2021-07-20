@@ -2,29 +2,30 @@ import HomePage from "../support/page-object/Home.Page";
 import ProductsListingPage from "../support/page-object/Products.Listing.Page";
 import ProductsDetailsPage from "../support/page-object/Products.Details.Page";
 
-describe('Buy a product', () => {
-beforeEach(function (){
-        cy.fixture('productsDetails').then(function (data){
-            this.data = data
+describe('Buy a product', function() {
+    let data
+    const homePage = new HomePage()
+    const productDetailsPage = new ProductsDetailsPage()
+    const productListingPage = new ProductsListingPage()
+
+    before(function (){
+        cy.fixture('productsDetails').then(function (testdata){
+            data = testdata
         })
     })
-    it('move to speakers', () => {
+
+    it('Purchase a product', () => {
 
         //visit site
         cy.visit('https://www.advantageonlineshopping.com/#/')
 
         //go to speakers page
-        const homePage = new HomePage()
-        homePage.getSpeaker().click();
+        homePage.getSpeaker().click()
+
         //select a speaker
-       const productListingPage = new ProductsListingPage()
-        productListingPage.getProduct(this.data.productName).click()
+        productListingPage.getProduct(data.productname).click()
 
-        //capture price in description and add product to cart
-        let price=''
-        price = cy.getPrice()
-
-        const productDetailsPage = new ProductsDetailsPage()
+        //add product to cart
         productDetailsPage.getAddToCart().click()
 
         //go to cart
@@ -35,9 +36,7 @@ beforeEach(function (){
 
         //verify price and login to place order
         cy.wait(5000) //wait for the cart mini window to close
-        cy.get('.roboto-bold.totalText.ng-binding span').then(($el) => {
-            expect($el.text()).to.eq(price)
-        })
+        cy.elementTextEquals('.roboto-bold > .roboto-medium', data.price)
         cy.get('[name="usernameInOrderPayment"]').type('testautomation')
         cy.get('[name="passwordInOrderPayment"]').type('Test@12345')
         cy.get('#login_btnundefined').click()
@@ -47,14 +46,12 @@ beforeEach(function (){
 
         //click on pay now in payment method and verify message
         cy.get('[name="pay_now_btn_MasterCredit"]').click()
-        cy.get('#orderPaymentSuccess h2 span').should('have.text', 'Thank you for buying with Advantage')
+        cy.elementHasText('#orderPaymentSuccess h2 span','Thank you for buying with Advantage')
 
         //log order details
-        cy.wait(1000)
-        let orderNo = ''
-        cy.get('#orderNumberLabel').then(($el) => {
-            orderNo = $el.text()
+        cy.wait(3000)
+        cy.getText('#trackingNumberLabel').then((orderNo) => {
+            cy.log("Order No. --------->"+orderNo)
         })
-        cy.log("Order No. ---------> "+orderNo)
     })
 })

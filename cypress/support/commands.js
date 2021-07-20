@@ -23,11 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
-Cypress.Commands.add('getPrice', () => {
-    let price = '';
-    cy.get('#Description h2').then(($el) => {
-        price = $el.text().split('\n')[0].trim()
-        cy.log("Product price ---------> "+price)
+Cypress.Commands.add('getText', (locator) => {
+    cy.get(locator).then(($el) => {
+        return cy.wrap($el.text())
     })
+})
+
+Cypress.Commands.add('elementTextEquals', (locator,value) => {
+    cy.get(locator).then(($el) => {
+        expect($el.text()).to.eq(value)
+    })
+})
+
+Cypress.Commands.add('elementHasText', (locator,value) => {
+    cy.get(locator).should('have.text', value)
 })
