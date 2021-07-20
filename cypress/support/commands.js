@@ -28,11 +28,3 @@ Cypress.Commands.add('getText', { prevSubject: 'element'},
         return cy.wrap($element).invoke('text')
     }
 )
-
-Cypress.Commands.add('textEquals', (value) => {
-    expect($element.text().to.eq(value))
-})
-
-Cypress.Commands.add('elementHasText', { prevSubject: 'element'}, (locator,value) => {
-    (locator).should('have.text', value)
-})

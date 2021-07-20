@@ -26,7 +26,7 @@ describe('Buy a product', function() {
         cy.visit('https://www.advantageonlineshopping.com/#/')
 
         //go to speakers page
-        homePage.getSpeaker().click()
+        homePage.getCategories().contains('SPEAKERS').click()
 
         //select a speaker
         productListingPage.getProduct(data.productname).click()

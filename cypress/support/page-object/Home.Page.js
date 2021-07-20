@@ -1,6 +1,6 @@
 class HomePage{
- getSpeaker() {
-        return cy.get('#speakersImg')
+    getCategories(){
+        return cy.get('.shop_now')
     }
 
 }
