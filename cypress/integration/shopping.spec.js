@@ -1,12 +1,18 @@
 import HomePage from "../support/page-object/Home.Page";
 import ProductsListingPage from "../support/page-object/Products.Listing.Page";
 import ProductsDetailsPage from "../support/page-object/Products.Details.Page";
+import Navbar from "../support/page-object/Navbar";
+import OrderPaymentPage from "../support/page-object/Order.Payment.Page";
+import CartPage from "../support/page-object/Cart.Page";
 
 describe('Buy a product', function() {
     let data
     const homePage = new HomePage()
     const productDetailsPage = new ProductsDetailsPage()
     const productListingPage = new ProductsListingPage()
+    const navbar = new Navbar()
+    const cartPage = new CartPage()
+    const orderPaymentPage = new OrderPaymentPage()
 
     before(function (){
         cy.fixture('productsDetails').then(function (testdata){
@@ -29,29 +35,29 @@ describe('Buy a product', function() {
         productDetailsPage.getAddToCart().click()
 
         //go to cart
-        cy.get('#shoppingCartLink').click()
+        navbar.getCart().click()
 
         //checkout
-        cy.get('#checkOutButton').click()
+        cartPage.getCheckoutBtn().click()
 
-        //verify price and login to place order
+        //verify price
         cy.wait(5000) //wait for the cart mini window to close
-        cy.elementTextEquals('.roboto-bold > .roboto-medium', data.price)
-        cy.get('[name="usernameInOrderPayment"]').type('testautomation')
-        cy.get('[name="passwordInOrderPayment"]').type('Test@12345')
-        cy.get('#login_btnundefined').click()
+        orderPaymentPage.getOrderTotal().should('have.text', data.price)
+
+        //login to place order
+        orderPaymentPage.getUsername().type('testautomation')
+        orderPaymentPage.getPassword().type('Test@12345')
+        orderPaymentPage.getLoginBtn().click()
 
         //click next in shipping details
-        cy.get('#next_btn').click('bottom')
+        orderPaymentPage.getNextBtn().click('bottom')
 
         //click on pay now in payment method and verify message
-        cy.get('[name="pay_now_btn_MasterCredit"]').click()
-        cy.elementHasText('#orderPaymentSuccess h2 span','Thank you for buying with Advantage')
+        orderPaymentPage.getPayNowBtn().click()
+        orderPaymentPage.getOrderStatusMessage().should('have.text','Thank you for buying with Advantage')
 
         //log order details
         cy.wait(3000)
-        cy.getText('#trackingNumberLabel').then((orderNo) => {
-            cy.log("Order No. --------->"+orderNo)
-        })
+        orderPaymentPage.getOrderNumber().getText().then(text => {cy.log(text)})
     })
 })

@@ -23,18 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add('getText', (locator) => {
-    cy.get(locator).then(($el) => {
-        return cy.wrap($el.text())
-    })
+Cypress.Commands.add('getText', { prevSubject: 'element'},
+    ($element) => {
+        return cy.wrap($element).invoke('text')
+    }
+)
+
+Cypress.Commands.add('textEquals', (value) => {
+    expect($element.text().to.eq(value))
 })
 
-Cypress.Commands.add('elementTextEquals', (locator,value) => {
-    cy.get(locator).then(($el) => {
-        expect($el.text()).to.eq(value)
-    })
-})
-
-Cypress.Commands.add('elementHasText', (locator,value) => {
-    cy.get(locator).should('have.text', value)
+Cypress.Commands.add('elementHasText', { prevSubject: 'element'}, (locator,value) => {
+    (locator).should('have.text', value)
 })
