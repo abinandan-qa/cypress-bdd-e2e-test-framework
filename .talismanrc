@@ -2,4 +2,8 @@ fileignoreconfig:
 - filename: package-lock.json
   checksum: 8360f54997e2807211b62dca9ebb2ceecdda9f8ce32d2d3b971adebfbf134eb9
   ignore_detectors: []
+fileignoreconfig:
+- filename: cypress/fixtures/profile.json
+  checksum: f06fb25adcd65463cc92f40445e65b5ff561bddb149c57373d623a5d5108ea8a
+  ignore_detectors: []
 scopeconfig: []
