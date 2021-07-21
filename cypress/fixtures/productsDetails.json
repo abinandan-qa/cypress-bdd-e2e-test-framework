@@ -1,4 +1,10 @@
 {
   "productname": "Bose SoundLink Wireless Speaker",
-  "price": "$129.00"
+  "price": "$129.00",
+  "productCategories": {
+    "speakers": "SPEAKERS",
+    "laptops": "LAPTOPS",
+    "tablets": "TABLETS",
+    "mice": "MICE"
+  }
 }

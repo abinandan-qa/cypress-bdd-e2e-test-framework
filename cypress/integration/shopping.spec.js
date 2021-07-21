@@ -7,6 +7,8 @@ import CartPage from "../support/page-object/Cart.Page";
 
 describe('Buy a product', function() {
     let data
+    let messages
+    let profile
     const homePage = new HomePage()
     const productDetailsPage = new ProductsDetailsPage()
     const productListingPage = new ProductsListingPage()
@@ -18,15 +20,23 @@ describe('Buy a product', function() {
         cy.fixture('productsDetails').then(function (testdata){
             data = testdata
         })
+
+        cy.fixture('messages').then(function (testdata){
+            messages = testdata
+        })
+
+        cy.fixture('profile').then(function (testdata){
+            profile = testdata
+        })
     })
 
     it('Purchase a product', () => {
 
         //visit site
-        cy.visit('https://www.advantageonlineshopping.com/#/')
+        cy.visit(Cypress.config("baseUrl"))
 
         //go to speakers page
-        homePage.getCategories().contains('SPEAKERS').click()
+        homePage.getCategories().contains(data.productCategories.speakers).click()
 
         //select a speaker
         productListingPage.getProduct(data.productname).click()
@@ -45,8 +55,8 @@ describe('Buy a product', function() {
         orderPaymentPage.getOrderTotal().should('have.text', data.price)
 
         //login to place order
-        orderPaymentPage.getUsername().type('testautomation')
-        orderPaymentPage.getPassword().type('Test@12345')
+        orderPaymentPage.getUsername().type(profile.username)
+        orderPaymentPage.getPassword().type(profile.password)
         orderPaymentPage.getLoginBtn().click()
 
         //click next in shipping details
@@ -54,7 +64,7 @@ describe('Buy a product', function() {
 
         //click on pay now in payment method and verify message
         orderPaymentPage.getPayNowBtn().click()
-        orderPaymentPage.getOrderStatusMessage().should('have.text','Thank you for buying with Advantage')
+        orderPaymentPage.getOrderStatusMessage().should('have.text',messages.orderPlacedMsg)
 
         //log order details
         cy.wait(3000)

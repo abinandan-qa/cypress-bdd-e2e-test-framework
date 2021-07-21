@@ -1,3 +1,4 @@
 {
-  "defaultCommandTimeout": 15000
+  "defaultCommandTimeout": 15000,
+  "baseUrl": "https://www.advantageonlineshopping.com/#/"
 }
