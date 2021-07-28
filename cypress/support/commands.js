@@ -23,8 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import ProductsListingPage from "../support/page-object/Products.Listing.Page";
+import ProductsDetailsPage from "../support/page-object/Products.Details.Page";
+
 Cypress.Commands.add('getText', { prevSubject: 'element'},
     ($element) => {
         return cy.wrap($element).invoke('text')
+    }
+)
+Cypress.Commands.add('selectProduct',
+    (productName) => {
+        const productDetailsPage = new ProductsDetailsPage()
+        const productListingPage = new ProductsListingPage()
+        productListingPage.getProduct(productName).click()
+        productDetailsPage.getAddToCart().click()
     }
 )
