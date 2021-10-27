@@ -4,14 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx eslint cypress && npx cypress run"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^7.6.0",
-    "cypress-cucumber-preprocessor": "^4.2.0"
+    "cypress-cucumber-preprocessor": "^4.2.0",
+    "eslint": "^8.1.0",
+    "eslint-config-google": "^0.14.0"
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
