@@ -6,5 +6,6 @@
     "laptops": "LAPTOPS",
     "tablets": "TABLETS",
     "mice": "MICE"
-  }
+  },
+  "addToCartProducts" : ["Bose Soundlink Bluetooth Speaker III", "Bose SoundLink Wireless Speaker"]
 }
