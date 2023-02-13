@@ -10,12 +10,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^7.6.0",
+    "cypress": "^12.5.1",
     "cypress-cucumber-preprocessor": "^4.2.0",
     "eslint": "^8.1.0",
     "eslint-config-google": "^0.14.0"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/features/PlaceOrder/PlaceOrderStepDefinition.js"
   }
 }

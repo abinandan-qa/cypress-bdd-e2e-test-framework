@@ -5,6 +5,7 @@ Feature: Purchasing a product
     When I add products to the cart
     |category|product|
     |SPEAKERS|Bose SoundLink Wireless Speaker|
+    |SPEAKERS|Bose SoundLink Wireless Speaker|
     And I go to cart page
     And I checkout
     And I login with username "testautomation" and password "Test@12345"
