@@ -1,4 +1,4 @@
-import {Given, When} from 'cypress-cucumber-preprocessor/steps';
+import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
 import CartPage from '../../../support/page-object/Cart.Page';
 import HomePage from '../../../support/page-object/Home.Page';
 import Navbar from '../../../support/page-object/Navbar';
@@ -19,7 +19,7 @@ Given('I open Shopping Site', () => {
 When('I go to {string} in the Product categories', (category) => {
   homePage.getCategories().contains(category).click()
 })
-And('I select  {string}', (product) => {
+When('I select  {string}', (product) => {
   productListingPage.getProduct(product).click()
 })
 When('I add products to the cart', (dataTable)=>{
@@ -28,16 +28,16 @@ When('I add products to the cart', (dataTable)=>{
   productDetailsPage.getAddToCart().click()
   cy.visit(Cypress.config('baseUrl'))
 })
-And('I add the product to cart', () => {
+When('I add the product to cart', () => {
   productDetailsPage.getAddToCart().click()
 })
-And('I go to cart page', () => {
+When('I go to cart page', () => {
   navbar.getCart().click()
 })
-And('I checkout', () => {
+When('I checkout', () => {
   cartPage.getCheckoutBtn().click()
 })
-And('I verify price', () => {
+When('I verify price', () => {
   cy.wait(5000) // wait for the cart mini window to close
   orderPaymentPage.getOrderTotal().should('have.text', data.price)
 })
@@ -46,7 +46,7 @@ When('I login with username {string} and password {string}', (usrname, pssword) 
   orderPaymentPage.getPassword().type(pssword)
   orderPaymentPage.getLoginBtn().click()
 })
-And('I make payment', () => {
+When('I make payment', () => {
   orderPaymentPage.getNextBtn().click('bottom')
 
   // click on pay now in payment method and verify message
@@ -55,7 +55,7 @@ And('I make payment', () => {
 Then('I see success message {string}', (message) => {
   orderPaymentPage.getOrderStatusMessage().should('have.text', message)
 })
-And('Order number is generated', () => {
+Then('Order number is generated', () => {
   cy.wait(3000)
   orderPaymentPage.getOrderNumber().getText().then((text) => {
     cy.log(text)
