@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx eslint cypress && npx cypress run"
+    "test": "npx eslint cypress && npx cypress run --headless --browser chrome"
   },
   "keywords": [],
   "author": "",
