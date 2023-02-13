@@ -19,8 +19,44 @@ class OrderPaymentPage {
     return cy.get('#next_btn')
   }
 
+  getSafePayUsername() {
+    return cy.get('input[name=safepay_username]')
+  }
+
+  getSafePayPassword() {
+    return cy.get('input[name=safepay_password]')
+  }
+
+  getSaveSafePayCheckbox() {
+    return cy.get('input[name=save_safepay]')
+  }
+
+  getSafePayPayNowBtn() {
+    return cy.get('button#pay_now_btn_SAFEPAY')
+  }
+
+  getMasterCreditRadioBtn() {
+    return cy.get('input[name=masterCredit]')
+  }
+
+  getCardNumber() {
+    return cy.get('input[name=card_number]')
+  }
+
+  getCVVNumber() {
+    return cy.get('input[name=cvv_number]')
+  }
+
+  getCardHolderName() {
+    return cy.get('input[name=cardholder_name]')
+  }
+
   getPayNowBtn() {
-    return cy.get('[name="pay_now_btn_MasterCredit"]')
+    return cy.get('button#pay_now_btn_ManualPayment')
+  }
+
+  getSaveCardCheckbox() {
+    return cy.get('input[name=save_master_credit]')
   }
 
   getOrderStatusMessage() {
