@@ -15,21 +15,20 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import addContext from "mochawesome/addContext";
+import addContext from 'mochawesome/addContext';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-//https://docs.cypress.io/api/events/catalog-of-events#docusaurus_skipToContent_fallback
+// https://docs.cypress.io/api/events/catalog-of-events#docusaurus_skipToContent_fallback
 Cypress.on('test:after:run', (test, runnable) => {
-    if (test.state === "failed") {
+  if (test.state === 'failed') {
+    // Adding screenshot to mochaawesome report
+    const screenshot= `../../screenshots/${Cypress.spec.name}/${runnable.parent.title} -- ${test.title} (failed).png`
+    addContext({test}, screenshot);
 
-        //Adding screenshot to mochaawesome report
-        const screenshot= `../../screenshots/${Cypress.spec.name}/${runnable.parent.title} -- ${test.title} (failed).png`
-        addContext({ test }, screenshot);
-
-        //Adding video to mochaawesome report
-        const video= `../../videos/${Cypress.spec.name}.mp4`
-        addContext({ test }, video);
-    }
+    // Adding video to mochaawesome report
+    const video= `../../videos/${Cypress.spec.name}.mp4`
+    addContext({test}, video);
+  }
 })
