@@ -50,8 +50,8 @@ npx cypress run --env tags="not @Regression"
 # Reporting
 
 ### Added support for mochaawesome reports with embedded screenshots & videos in case of failure.
-![Alt text](README_images/FailureReport_Image1.png?raw=true "Failure Report Page 1")
-![Alt text](README_images/FailureReport_Image2.png?raw=true "Failure Report Page 2")
+![Failure Report Page 1](README_images/FailureReport_Image1.png?raw=true "Failure Report Page 1")
+![Failure Report Page 2](README_images/FailureReport_Image2.png?raw=true "Failure Report Page 2")
 
 # CI Integration
 
@@ -62,6 +62,8 @@ Created pipeline in github actions
 - Running eslint in pipeline
 - To execute cypress test
 - Publish report as artifacts
+
+![Report Artifact](README_images/GitHub_Actions_Artifact.png?raw=true "Report Artifact")
 
 ## Useful Links
 
