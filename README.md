@@ -3,6 +3,9 @@
    - [Getting started](#getting-started)
 2. [Cucumber Integration](#cucumber-integration)
 3. [Tagging tests](#tagging-tests)
+4. [Reporting](#reporting)
+5. [CI Integration](#ci-integration)
+   - [GitHub Actions](#github-actions)
 4. Misc
    - [Useful links](#useful-links)
 
@@ -43,6 +46,22 @@ npx cypress run --env tags="@Regression"
 OR
 npx cypress run --env tags="not @Regression"
 ```
+
+# Reporting
+
+### Added support for mochaawesome reports with embedded screenshots & videos in case of failure.
+![Alt text](README_images/FailureReport_Image1.png?raw=true "Failure Report Page 1")
+![Alt text](README_images/FailureReport_Image2.png?raw=true "Failure Report Page 2")
+
+# CI Integration
+
+## GitHub Actions
+![Test workflow](https://github.com/twCatalyst/cypress-starter/actions/workflows/ci.yml/badge.svg)
+
+Created pipeline in github actions
+- Running eslint in pipeline
+- To execute cypress test
+- Publish report as artifacts
 
 ## Useful Links
 
