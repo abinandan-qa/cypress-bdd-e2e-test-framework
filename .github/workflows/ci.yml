@@ -21,11 +21,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+    - run: npm run prestep
     - name: Cypress run
       uses: cypress-io/github-action@v5.0.9
       with:
@@ -37,4 +33,4 @@ jobs:
       if: ${{ always() }}
       with:
        name: my-artifact
-       path: cypress/reports/
+       path: cypress/reports/mochareports
