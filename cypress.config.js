@@ -28,4 +28,6 @@ module.exports = defineConfig({
   reporterOptions: {
     configFile: 'reporter-config.json'
   },
+  screenshotsFolder: 'cypress/reports/mochareports/screenshots',
+  videosFolder: 'cypress/reports/mochareports/videos'
 })

@@ -24,11 +24,11 @@ import addContext from 'mochawesome/addContext';
 Cypress.on('test:after:run', (test, runnable) => {
   if (test.state === 'failed') {
     // Adding screenshot to mochaawesome report
-    const screenshot= `../../screenshots/${Cypress.spec.name}/${runnable.parent.title} -- ${test.title} (failed).png`
+    const screenshot= `./screenshots/${Cypress.spec.name}/${runnable.parent.title} -- ${test.title} (failed).png`
     addContext({test}, screenshot);
 
     // Adding video to mochaawesome report
-    const video= `../../videos/${Cypress.spec.name}.mp4`
+    const video= `./videos/${Cypress.spec.name}.mp4`
     addContext({test}, video);
   }
 })

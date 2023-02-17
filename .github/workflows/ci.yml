@@ -16,15 +16,21 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [19.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - name: Cypress run
+      uses: cypress-io/github-action@v5.0.9
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm test
+        browser: chrome
+        command: npm run test
+    - name: Generate Report
+      if: ${{ always() }}
+      run: npm run report
+    - uses: actions/upload-artifact@v3
+      if: ${{ always() }}
+      with:
+       name: my-artifact
+       path: cypress/reports/mochareports

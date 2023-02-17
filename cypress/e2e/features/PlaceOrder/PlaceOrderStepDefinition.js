@@ -16,7 +16,7 @@ const loginPage = new LoginPage()
 const cartPage = new CartPage()
 const orderPaymentPage = new OrderPaymentPage()
 const createAccountPage = new CreateAccountPage()
-let username, password
+let username; let password
 
 Given('I create a test user', () => {
   username='T' + Date.now()
@@ -30,7 +30,6 @@ Given('I create a test user', () => {
   createAccountPage.getConfirmPassword().type(password, {force: true})
   createAccountPage.getIAgreeCheckbox().check()
   createAccountPage.getRegisterButton().click()
-
 })
 
 Given('I open Shopping Site', () => {
@@ -72,7 +71,6 @@ When('I make payment using master credit', () => {
   orderPaymentPage.getCardHolderName().type(username)
   orderPaymentPage.getSaveCardCheckbox().uncheck()
   orderPaymentPage.getPayNowBtn().click()
-
 })
 
 When('I make payment', () => {
@@ -81,7 +79,6 @@ When('I make payment', () => {
   orderPaymentPage.getSafePayPassword().type('Safepay1')
   orderPaymentPage.getSaveSafePayCheckbox().uncheck()
   orderPaymentPage.getSafePayPayNowBtn().click()
-
 })
 Then('I see success message {string}', (message) => {
   orderPaymentPage.getOrderStatusMessage().should('have.text', message)

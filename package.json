@@ -8,8 +8,10 @@
     "pretest": "npm run clean:reports && npx eslint cypress",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
-    "posttest": "npm run combine-reports && npm run generate-report",
-    "test": "cypress run --headless --browser chrome || npm run posttest"
+    "report": "npm run combine-reports && npm run generate-report",
+    "test": "cypress run --headless --browser chrome",
+    "test-local": "npm run test || npm run report",
+    "posttest-local": "npm run report"
   },
   "keywords": [],
   "author": "",

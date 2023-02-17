@@ -10,7 +10,7 @@ Feature: Purchasing a product
     And I go to cart page
     And I checkout
     And I make payment
-    Then I see success message "Thank you for buying with Advantage" 
+    Then I see success message "Thank you for buying with Advantage"
     And Order number is generated
 
   @Sanity
