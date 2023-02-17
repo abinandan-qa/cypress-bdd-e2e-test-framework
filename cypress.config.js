@@ -1,22 +1,26 @@
 const { defineConfig } = require('cypress')
 const preprocessor = require("@badeball/cypress-cucumber-preprocessor");
 const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify");
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   defaultCommandTimeout: 15000,
   env: {
-    tags: "@Regression"
+    tags: "@Regression",
+    allure: true,
+    // allureResultsPath: 'cypress/reports/mochareports',
+    allureReuseAfterSpec: true
   },
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
-    async setupNodeEvents(on, config) {
-      await preprocessor.addCucumberPreprocessorPlugin(on, config);
+    setupNodeEvents(on, config) {
+      preprocessor.addCucumberPreprocessorPlugin(on, config);
 
       on(
           "file:preprocessor",browserify.default(config)
       );
-
+      allureWriter(on, config);
       // Make sure to return the config object as it might have been modified by the plugin.
       return config;
     },
