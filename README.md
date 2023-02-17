@@ -32,6 +32,7 @@ https://github.com/badeball/cypress-cucumber-preprocessor
 
 # Tagging Tests
 Add required tags to Scenario or Feature level (For example - @Regression in PlaceOrder.feature)
+![Tagging scenarios](README_images/Tagging_Scenarios.png?raw=true "Tagging Scenarios")
 
 Providing tag to be executed in cypress.config.js (already added in this repo)
 ```
@@ -40,7 +41,7 @@ Providing tag to be executed in cypress.config.js (already added in this repo)
   },
 ```
 OR 
-Pass the tags in CLI (can be leveraged for CI integration)
+Pass the tags in CLI (can be leveraged for configuring different tags based on CI pipeline)
 ```
 npx cypress run --env tags="@Regression"
 OR
