@@ -1,5 +1,5 @@
 {
-  "name": "cypress-101",
+  "name": "cypress-starter",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -25,5 +25,9 @@
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.2.2",
     "mochawesome-report-generator": "^6.2.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "filterSpecs": true,
+    "omitFiltered": true
   }
 }

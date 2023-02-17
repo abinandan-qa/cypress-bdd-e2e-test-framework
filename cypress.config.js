@@ -4,6 +4,9 @@ const browserify = require("@badeball/cypress-cucumber-preprocessor/browserify")
 
 module.exports = defineConfig({
   defaultCommandTimeout: 15000,
+  env: {
+    tags: "@Regression"
+  },
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
