@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports ",
-    "pretest": "npm run clean:reports && npx eslint cypress",
+    "prestep": "npm run clean:reports && npx eslint cypress",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
-    "report": "mkdir cypress/reports/mochareports && npm run combine-reports && npm run generate-report",
-    "test": "cypress run --headless"
+    "report": "npm run combine-reports && npm run generate-report",
+    "test": "cypress run --headless",
+    "test-local": "npm run prestep && npm run test || npm run report",
+    "posttest-local": "npm run report"
   },
   "keywords": [],
   "author": "",

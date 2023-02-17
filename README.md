@@ -18,9 +18,9 @@ Clone this repository and install the dependencies using following command
 npm install
 ```
 
-Running the test:
+Running the test on local:
 ```
-npm run test
+npm run test-local
 ```
 
 # Cucumber Integration
