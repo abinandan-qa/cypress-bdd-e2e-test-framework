@@ -22,6 +22,7 @@
     "cypress": "^12.5.1",
     "cypress-multi-reporters": "^1.6.2",
     "eslint": "^8.1.0",
+    "eslint-config-eslint": "^7.0.0",
     "eslint-config-google": "^0.14.0",
     "mocha-junit-reporter": "^2.2.0",
     "mochawesome": "^7.1.3",
