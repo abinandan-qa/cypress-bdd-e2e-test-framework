@@ -5,7 +5,7 @@ name: cypress-learning-e2e-build
 
 on:
   push:
-    branches: [ allure-report ]
+    branches: [ learning ]
   pull_request:
     branches: [ learning ]
 
