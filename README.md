@@ -4,6 +4,8 @@
 2. [Cucumber Integration](#cucumber-integration)
 3. [Tagging tests](#tagging-tests)
 4. [Reporting](#reporting)
+   - [Mochaawesome Report](#added-support-for-mochaawesome-reports-with-embedded-screenshots--videos-in-case-of-failure)
+   - [Allure Report](#added-support-for-allure-reports)
 5. [CI Integration](#ci-integration)
    - [GitHub Actions](#github-actions)
 4. Misc
@@ -54,6 +56,17 @@ npx cypress run --env tags="not @Regression"
 ![Failure Report Page 1](README_images/FailureReport_Image1.png?raw=true "Failure Report Page 1")
 ![Failure Report Page 2](README_images/FailureReport_Image2.png?raw=true "Failure Report Page 2")
 
+### Added support for allure reports
+As opening allure reports needs a server, you need to open it using allure commandline (Go to your project root to run allure open command)
+In local, execution the reports will be generated in allure-report folder at root level. To open it, run allure open command.
+```
+npx allure open allure-report
+```
+In pipeline, allure-report artifact will be pusblished. To open it, download and extract the zip and run allure open command.
+```
+npx allure open '/Users/jaishreepatidar/Downloads/allure-report'
+```
+
 # CI Integration
 
 ## GitHub Actions
@@ -62,7 +75,7 @@ npx cypress run --env tags="not @Regression"
 Created pipeline in github actions
 - Running eslint in pipeline
 - To execute cypress test
-- Publish report as artifacts
+- Publish report as artifacts (both Mochaawesome & Allure report)
 
 ![Report Artifact](README_images/GitHub_Actions_Artifact.png?raw=true "Report Artifact")
 
