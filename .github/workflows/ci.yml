@@ -5,7 +5,7 @@ name: cypress-learning-e2e-build
 
 on:
   push:
-    branches: [ learning ]
+    branches: [ allure-report ]
   pull_request:
     branches: [ learning ]
 
@@ -32,5 +32,10 @@ jobs:
     - uses: actions/upload-artifact@v3
       if: ${{ always() }}
       with:
-       name: my-artifact
+       name: mocha-report
        path: cypress/reports/mochareports
+    - uses: actions/upload-artifact@v3
+      if: ${{ always() }}
+      with:
+       name: allure-report
+       path: allure-report
