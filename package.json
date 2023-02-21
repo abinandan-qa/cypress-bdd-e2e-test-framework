@@ -8,10 +8,11 @@
     "pretest": "npm run clean:reports && npx eslint cypress",
     "combine-reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/mochareports/report.json",
     "generate-report": "marge cypress/reports/mochareports/report.json -f report -o cypress/reports/mochareports",
-    "report": "npm run combine-reports && npm run generate-report",
-    "test": "cypress run --headless --browser chrome",
+    "report": "npm run combine-reports && npm run generate-report && npm run report:allure",
+    "test": "DEBUG=allure-plugin*  cypress run --headless --browser chrome",
     "test-local": "npm run test || npm run report",
-    "posttest-local": "npm run report"
+    "posttest-local": "npm run report",
+    "report:allure": "allure generate allure-results --clean -o allure-report"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,8 @@
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^15.1.3",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
+    "@shelex/cypress-allure-plugin": "^2.35.2",
+    "allure-commandline": "^2.21.0",
     "cypress": "^12.5.1",
     "cypress-multi-reporters": "^1.6.2",
     "eslint": "^8.1.0",
