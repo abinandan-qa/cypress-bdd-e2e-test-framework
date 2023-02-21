@@ -4,6 +4,9 @@ node_modules
 */reports
 */videos
 */screenshots
+allure-report
+allure-results
+cypress_browserstack
 results
 log
 npm_install_debug.log
