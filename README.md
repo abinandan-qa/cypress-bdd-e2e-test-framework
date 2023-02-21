@@ -3,7 +3,8 @@
    - [Getting started](#getting-started)
 2. [Cucumber Integration](#cucumber-integration)
 3. [Tagging tests](#tagging-tests)
-4. Misc
+4. [Run tests through Browserstack](#browserstack)
+5. Misc
    - [Useful links](#useful-links)
 
 # Introduction
@@ -42,6 +43,23 @@ Pass the tags in CLI (can be leveraged for CI integration)
 npx cypress run --env tags="@Regression"
 OR
 npx cypress run --env tags="not @Regression"
+```
+
+# Browserstack
+
+Browserstack-Cypress node dependency should be installed. If not, run the below commands
+
+For installation
+```
+npm install -g browserstack-cypress-cli
+```
+For creating and initialising browserstack.json file
+```
+browserstack-cypress init
+```
+To run tests in Browserstack run the command given below
+```
+browserstack-cypress run --username <your-browserstack-username> --key <your-browserstack-access-key>
 ```
 
 ## Useful Links
