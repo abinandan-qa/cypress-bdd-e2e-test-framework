@@ -8,6 +8,7 @@
    - [Allure Report](#added-support-for-allure-reports)
 5. [CI Integration](#ci-integration)
    - [GitHub Actions](#github-actions)
+6. [Run tests through Browserstack](#browserstack)
 4. Misc
    - [Useful links](#useful-links)
 
@@ -83,6 +84,22 @@ Created pipeline in github actions
 - Publish report as artifacts (both Mochaawesome & Allure report)
 
 ![Report Artifact](README_images/GitHub_Actions_Artifact.png?raw=true "Report Artifact")
+
+# Browserstack
+Browserstack-Cypress node dependency should be installed. If not, run the below commands
+
+For installation
+```
+npm install -g browserstack-cypress-cli
+```
+For creating and initialising browserstack.json file
+```
+browserstack-cypress init
+```
+To run tests in Browserstack run the command given below
+```
+browserstack-cypress run --username <your-browserstack-username> --key <your-browserstack-access-key>
+```
 
 ## Useful Links
 
