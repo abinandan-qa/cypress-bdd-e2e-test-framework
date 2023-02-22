@@ -1,9 +1,10 @@
-import HomePage from '../support/page-object/Home.Page';
-import ProductsListingPage from '../support/page-object/Products.Listing.Page';
-import ProductsDetailsPage from '../support/page-object/Products.Details.Page';
-import Navbar from '../support/page-object/Navbar';
-import OrderPaymentPage from '../support/page-object/Order.Payment.Page';
-import CartPage from '../support/page-object/Cart.Page';
+import HomePage from '../../support/page-object/Home.Page';
+import ProductsListingPage from '../../support/page-object/Products.Listing.Page';
+import ProductsDetailsPage from '../../support/page-object/Products.Details.Page';
+import Navbar from '../../support/page-object/Navbar';
+import OrderPaymentPage from '../../support/page-object/Order.Payment.Page';
+import CartPage from '../../support/page-object/Cart.Page';
+import CreateAccountPage from "../../support/page-object/Create.Account.Page";
 
 describe('Buy a product', function() {
   let data
@@ -15,6 +16,7 @@ describe('Buy a product', function() {
   const navbar = new Navbar()
   const cartPage = new CartPage()
   const orderPaymentPage = new OrderPaymentPage()
+  const createAccountPage = new CreateAccountPage()
 
   before(function() {
     cy.fixture('productsDetails').then(function(testdata) {
@@ -53,15 +55,20 @@ describe('Buy a product', function() {
     cy.wait(5000) // wait for the cart mini window to close
     orderPaymentPage.getOrderTotal().should('have.text', data.price)
 
-    // login to place order
-    orderPaymentPage.getUsername().type(profile.username)
-    orderPaymentPage.getPassword().type(profile.password)
-    orderPaymentPage.getLoginBtn().click()
+    // register to place order
+    let username = 'TA' + Date.now()
+    cy.get('button#registration_btnundefined').click()
+    createAccountPage.getUsername().type(username)
+    createAccountPage.getPassword().type(password)
+    createAccountPage.getEmail().type(username + '@test.com')
+    createAccountPage.getConfirmPassword().type(password, {force: true})
+    createAccountPage.getIAgreeCheckbox().check()
+    createAccountPage.getRegisterButton().click()
 
     // click next in shipping details
     orderPaymentPage.getNextBtn().click('bottom')
 
-    // click on pay now in payment method and verify message
+    // make payment using safepay option and verify message
     orderPaymentPage.getPayNowBtn().click()
     orderPaymentPage.getOrderStatusMessage().should('have.text', messages.orderPlacedMsg)
 
