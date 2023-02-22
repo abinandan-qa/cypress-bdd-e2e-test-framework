@@ -59,9 +59,9 @@ describe('Buy a product', function() {
     let username = 'TA' + Date.now()
     cy.get('button#registration_btnundefined').click()
     createAccountPage.getUsername().type(username)
-    createAccountPage.getPassword().type(password)
+    createAccountPage.getPassword().type('Test@12345')
     createAccountPage.getEmail().type(username + '@test.com')
-    createAccountPage.getConfirmPassword().type(password, {force: true})
+    createAccountPage.getConfirmPassword().type('Test@12345', {force: true})
     createAccountPage.getIAgreeCheckbox().check()
     createAccountPage.getRegisterButton().click()
 
@@ -69,7 +69,9 @@ describe('Buy a product', function() {
     orderPaymentPage.getNextBtn().click('bottom')
 
     // make payment using safepay option and verify message
-    orderPaymentPage.getPayNowBtn().click()
+    orderPaymentPage.getSafePayUsername().type('SafePayPayment')
+    orderPaymentPage.getSafePayPassword().type('Safe@12345')
+    orderPaymentPage.getSafePayPayNowBtn().click()
     orderPaymentPage.getOrderStatusMessage().should('have.text', messages.orderPlacedMsg)
 
     // log order details
