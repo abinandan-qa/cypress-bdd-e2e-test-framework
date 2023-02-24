@@ -24,14 +24,29 @@ Clone this repository and install the dependencies using following command
 npm install
 ```
 
-Running the test on local:
+Running the all tests on local:
 ```
 npm run test-local
+```
+
+Running a basic UI test
+```
+npm run cy:basic:ui:demo:test 
+```
+
+Running a UI test with Page Object Model
+```
+npm run cy:pom:ui:demo:test
 ```
 
 # Cucumber Integration
 Cucumber Integration using @badeball/cypress-cucumber-preprocessor 
 https://github.com/badeball/cypress-cucumber-preprocessor
+
+Running a UI test with Cucumber
+```
+npm run cy:cucumber:ui:demo:test
+```
 
 # Tagging Tests
 Add required tags to Scenario or Feature level (For example - @Regression in PlaceOrder.feature)
@@ -86,7 +101,7 @@ Created pipeline in github actions
 ![Report Artifact](README_images/GitHub_Actions_Artifact.png?raw=true "Report Artifact")
 
 # Browserstack
-Browserstack-Cypress node dependency should be installed. If not, run the below commands
+**Prerequite**: Browserstack-Cypress node dependency should be installed. If not, run the below commands
 
 For installation
 ```
@@ -96,9 +111,9 @@ For creating and initialising browserstack.json file
 ```
 browserstack-cypress init
 ```
-To run tests in Browserstack run the command given below
+To run tests in Browserstack run the command given below. Replace <your-browserstack-username> and <your-browserstack-access-key> with valid credentials in package.json file
 ```
-browserstack-cypress run --username <your-browserstack-username> --key <your-browserstack-access-key>
+npm run cy:tests:on:browserstack
 ```
 
 ## Useful Links
