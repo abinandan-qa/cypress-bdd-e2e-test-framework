@@ -9,7 +9,6 @@ import CreateAccountPage from '../../support/page-object/Create.Account.Page';
 describe('Buy a product', function() {
   let data
   let messages
-  let profile
   const homePage = new HomePage()
   const productDetailsPage = new ProductsDetailsPage()
   const productListingPage = new ProductsListingPage()
@@ -25,10 +24,6 @@ describe('Buy a product', function() {
 
     cy.fixture('messages').then(function(testdata) {
       messages = testdata
-    })
-
-    cy.fixture('profile').then(function(testdata) {
-      profile = testdata
     })
   })
 
