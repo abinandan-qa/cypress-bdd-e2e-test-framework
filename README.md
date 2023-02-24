@@ -101,16 +101,6 @@ Created pipeline in github actions
 ![Report Artifact](README_images/GitHub_Actions_Artifact.png?raw=true "Report Artifact")
 
 # Browserstack
-**Prerequite**: Browserstack-Cypress node dependency should be installed. If not, run the below commands
-
-For installation
-```
-npm install -g browserstack-cypress-cli
-```
-For creating and initialising browserstack.json file
-```
-browserstack-cypress init
-```
 To run tests in Browserstack run the command given below. Replace <your-browserstack-username> and <your-browserstack-access-key> with valid credentials in package.json file
 ```
 npm run cy:tests:on:browserstack
