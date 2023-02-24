@@ -25,7 +25,14 @@ module.exports = defineConfig({
       return config;
     },
     baseUrl: 'https://www.advantageonlineshopping.com/#/',
-    specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx,feature}',
+
+    specPattern: [
+      'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+      'cypress/e2e/**/*.feature'
+    ],
+    excludeSpecPattern: [
+      'cypress/e2e/**/*StepDefinition.js'
+    ],
   },
   screenshotOnRunFailure: true,
   reporter: "cypress-multi-reporters",
