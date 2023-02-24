@@ -4,7 +4,7 @@ import ProductsDetailsPage from '../../support/page-object/Products.Details.Page
 import Navbar from '../../support/page-object/Navbar';
 import OrderPaymentPage from '../../support/page-object/Order.Payment.Page';
 import CartPage from '../../support/page-object/Cart.Page';
-import CreateAccountPage from "../../support/page-object/Create.Account.Page";
+import CreateAccountPage from '../../support/page-object/Create.Account.Page';
 
 describe('Buy a product', function() {
   let data
@@ -56,7 +56,7 @@ describe('Buy a product', function() {
     orderPaymentPage.getOrderTotal().should('have.text', data.price)
 
     // register to place order
-    let username = 'TA' + Date.now()
+    const username = 'TA' + Date.now()
     cy.get('button#registration_btnundefined').click()
     createAccountPage.getUsername().type(username)
     createAccountPage.getPassword().type('Test@12345')
