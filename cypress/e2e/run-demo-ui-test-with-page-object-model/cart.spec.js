@@ -1,5 +1,5 @@
 // /<reference types= 'cypress'/>
-import HomePage from '../support/page-object/Home.Page';
+import HomePage from '../../support/page-object/Home.Page';
 describe('Testing the cart', function() {
   let data
   const homePage = new HomePage()

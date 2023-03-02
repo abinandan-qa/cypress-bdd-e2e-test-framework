@@ -12,7 +12,11 @@
     "test": "DEBUG=allure-plugin*  cypress run --headless --browser chrome",
     "test-local": "npm run test || npm run report",
     "posttest-local": "npm run report",
-    "report:allure": "allure generate allure-results --clean -o allure-report"
+    "report:allure": "allure generate allure-results --clean -o allure-report",
+    "cy:basic:ui:demo:test": "DEBUG=allure-plugin* cypress run --headless --browser chrome --spec cypress/e2e/run-basic-demo-ui-test/* || npm run report",
+    "cy:cucumber:ui:demo:test": "DEBUG=allure-plugin* cypress run --headless --browser chrome --spec cypress/e2e/run-cucumber-demo-ui-test/**/*.feature || npm run report",
+    "cy:pom:ui:demo:test": "DEBUG=allure-plugin* cypress run --headless --browser chrome --spec cypress/e2e/run-demo-ui-test-with-page-object-model/* || npm run report",
+    "cy:tests:on:browserstack": "browserstack-cypress run --username <your-browserstack-username> --key <your-browserstack-access-key>"
   },
   "keywords": [],
   "author": "",

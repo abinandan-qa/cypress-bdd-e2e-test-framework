@@ -1,12 +1,12 @@
 import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
-import CartPage from '../../../support/page-object/Cart.Page';
-import HomePage from '../../../support/page-object/Home.Page';
-import Navbar from '../../../support/page-object/Navbar';
-import LoginPage from '../../../support/page-object/Login.Page';
-import OrderPaymentPage from '../../../support/page-object/Order.Payment.Page';
-import ProductsDetailsPage from '../../../support/page-object/Products.Details.Page';
-import ProductsListingPage from '../../../support/page-object/Products.Listing.Page';
-import CreateAccountPage from '../../../support/page-object/Create.Account.Page';
+import CartPage from '../../../../support/page-object/Cart.Page';
+import HomePage from '../../../../support/page-object/Home.Page';
+import Navbar from '../../../../support/page-object/Navbar';
+import LoginPage from '../../../../support/page-object/Login.Page';
+import OrderPaymentPage from '../../../../support/page-object/Order.Payment.Page';
+import ProductsDetailsPage from '../../../../support/page-object/Products.Details.Page';
+import ProductsListingPage from '../../../../support/page-object/Products.Listing.Page';
+import CreateAccountPage from '../../../../support/page-object/Create.Account.Page';
 
 const homePage = new HomePage()
 const productListingPage = new ProductsListingPage()
