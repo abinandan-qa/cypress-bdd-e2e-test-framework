@@ -7,7 +7,7 @@ import OrderPaymentPage from '../../../../support/page-object/Order.Payment.Page
 import ProductsDetailsPage from '../../../../support/page-object/Products.Details.Page';
 import ProductsListingPage from '../../../../support/page-object/Products.Listing.Page';
 import CreateAccountPage from '../../../../support/page-object/Create.Account.Page';
-import { terminalLog } from '../../../../support/accessibility';
+import {terminalLog} from '../../../../support/accessibility';
 
 const homePage = new HomePage()
 const productListingPage = new ProductsListingPage()
@@ -35,13 +35,13 @@ Given('I create a test user', () => {
 
 Given('I open Shopping Site', () => {
   cy.visit(Cypress.config('baseUrl'))
-  .injectAxe()
-  .configureAxe({
-    reporter: 'v2',
-    iframes: true,
-  })
+      .injectAxe()
+      .configureAxe({
+        reporter: 'v2',
+        iframes: true,
+      })
   // change below command to .checkA11y(null, null, terminalLog) to fail the test when there are accessibility failures
-  .checkA11y(null, null, terminalLog, true)
+      .checkA11y(null, null, terminalLog, true)
 })
 When('I go to {string} in the Product categories', (category) => {
   homePage.getCategories().contains(category).click()
