@@ -20,6 +20,17 @@ module.exports = defineConfig({
       on(
           "file:preprocessor",browserify.default(config)
       );
+
+      on('task', {
+        log(message) {
+          console.log(message)
+          return null
+        },
+        table(message) {
+          console.table(message)
+          return null
+        }
+      })
       allureWriter(on, config);
       // Make sure to return the config object as it might have been modified by the plugin.
       return config;
