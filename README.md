@@ -9,7 +9,8 @@
 5. [CI Integration](#ci-integration)
    - [GitHub Actions](#github-actions)
 6. [Run tests through Browserstack](#browserstack)
-4. Misc
+7. [Accessibility](#accessibility)
+8. Misc
    - [Useful links](#useful-links)
 
 # Introduction
@@ -105,6 +106,26 @@ To run tests in Browserstack run the command given below. Replace <your-browsers
 ```
 npm run cy:tests:on:browserstack
 ```
+
+# Accessibility
+As a rule, applications that are used by a wide range of people, including differently abled people are made to be adapted. Apart from the fact that accessibility allows for the expansion of the number of users of an application, many companies think it is a great marketing move. Accessibility gains companies more trust and in return, more reaches from the outside world.
+
+In this starter repository, we have added automation of a11y testing using cypress-axe and axe-core.
+Added example usage in cypress/e2e/run-cucumber-demo-ui-test/features/PlaceOrder.feature
+
+In you step definition or spec file-
+- Import of terminallog to print table of violations in console (make sure the path is correct)
+```
+import { terminalLog } from '../../../../support/accessibility';
+```
+![Accessibility Terminal Logs](README_images/Accessibility_terminalLog_snapshot.png?raw=true "Accessibility Terminal Logs")
+
+- Navigate to the page you want check accessibility of, and add following code
+```
+ cy.injectAxe()
+   .checkA11y(null, null, terminalLog, true)
+```
+> **_NOTE:_** Change the above command to .checkA11y(null, null, terminalLog) to fail the test in case of accessibility failures found.
 
 ## Useful Links
 

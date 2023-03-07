@@ -17,6 +17,7 @@
 import './commands'
 import '@shelex/cypress-allure-plugin'
 import addContext from 'mochawesome/addContext';
+import 'cypress-axe'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
