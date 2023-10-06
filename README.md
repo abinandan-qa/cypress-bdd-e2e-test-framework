@@ -1,6 +1,6 @@
 # Introduction
 
-EBay E2E Tests developed with Cypress framework developed in a BDD approach using Cucumber.
+E2E Tests developed with Cypress framework developed in a BDD approach using Cucumber.
 
 ## S/W Dependencies
 
