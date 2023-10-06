@@ -5,6 +5,7 @@ const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 module.exports = defineConfig({
   defaultCommandTimeout: 15000,
+  chromeWebSecurity: false,
   env: {
     tags: "@Regression",
     allure: true,
@@ -35,11 +36,11 @@ module.exports = defineConfig({
       // Make sure to return the config object as it might have been modified by the plugin.
       return config;
     },
-    baseUrl: 'https://www.advantageonlineshopping.com/#/',
+    baseUrl: 'https://www.ebay.com',
 
     specPattern: [
       'cypress/e2e/**/*.{js,jsx,ts,tsx}',
-      'cypress/e2e/**/*.feature'
+      'cypress/e2e/**/**/*.feature'
     ],
     excludeSpecPattern: [
       'cypress/e2e/**/*StepDefinition.js'
